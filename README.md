@@ -55,7 +55,9 @@ RAVDESS: Ryerson Audio-Visual Database of Emotional Speech and Song (English, 7 
 📥 Accessing the Data
 To replicate this study, you must download the augmented and preprocessed datasets.
 
-🔗 [Download the DDE-SER Datasets via Google Drive here] (INSERT_GOOGLE_DRIVE_LINK_HERE)
+🔗 [Download the DDE-SER Datasets via Google Drive here:
+https://drive.google.com/drive/folders/1kQxaaqULnAHU3KzucLsSZJznX5f-Nsrb?usp=drive_link
+
 
 Once downloaded, extract the contents into the data/raw_audio/ directory.
 
