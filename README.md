@@ -44,3 +44,67 @@ dde-speech-emotion-recognition/
 │
 ├── requirements.txt                 # Python dependencies
 └── README.md
+
+📊 Datasets & Preprocessing
+This framework was evaluated on two benchmark emotional speech corpora:
+
+EMO-DB: Berlin Database of Emotional Speech (German, 7 classes)
+
+RAVDESS: Ryerson Audio-Visual Database of Emotional Speech and Song (English, 7 classes customized)
+
+📥 Accessing the Data
+To replicate this study, you must download the augmented and preprocessed datasets.
+
+🔗 [Download the DDE-SER Datasets via Google Drive here] (INSERT_GOOGLE_DRIVE_LINK_HERE)
+
+Once downloaded, extract the contents into the data/raw_audio/ directory.
+
+🎛️ Acoustic Augmentation
+To prevent overfitting caused by "blind oversampling" (exact duplication), our pipeline implements a scientifically robust acoustic perturbation methodology:
+
+Pitch Shifting: Audio arrays are shifted upward by two half-steps to simulate natural inter-speaker vocal tract variations.
+
+Noise Injection: Randomized, low-level additive white Gaussian noise (capped at 0.5% amplitude) is injected to simulate real-world acoustic environments.
+
+(Note: The provided Google Drive link contains the base files. You can generate the augmented files dynamically using the augmentation cells provided in the Jupyter Notebook).
+
+⚙️ Installation & Setup
+Clone the repository:
+
+git clone [https://github.com/DavidHason/dde-speech-emotion-recognition.git](https://github.com/DavidHason/dde-speech-emotion-recognition.git)
+cd dde-speech-emotion-recognition
+
+Set up a Python 3.10 virtual environment:
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+Install dependencies:
+pip install -r requirements.txt
+
+(Ensure you have CUDA/cuDNN configured for GPU acceleration via TensorFlow).
+
+🚀 Usage
+The entire pipeline is executable via the primary Jupyter Notebook located in notebooks/DDE_SER_Experiment.ipynb.
+
+Run Feature Extraction: The script will traverse the raw_audio directories, parse the filenames, execute the VMD and HP decompositions, and save the resulting multi-dimensional tensors as .npy files to data/precomputed_features/.
+
+Train the Model (LOSO): The training loop utilizes a strict Leave-One-Speaker-Out (LOSO) cross-validation protocol to ensure true generalizability. Class imbalances are handled dynamically via compute_class_weight.
+
+Evaluate: The script automatically generates a classification report (Precision, Recall, Macro F1) and an academic, normalized Confusion Matrix (.tif format) specifically mapped to the dataset's emotion classes.
+
+📝 Citation
+If you utilize this code, methodology, or framework in your research, please cite our paper:
+
+Code snippet
+@article{HasonRudd2026DDESER,
+  title={DDE-SER: A Dual-Decomposition Ensemble Framework Fusing Adaptive Variational Modes and Harmonic-Percussive Spectrograms for Speech Emotion Recognition},
+  author={Hason Rudd, David and Islam, MD Rafiqul and Wang, Xianzhi and Sanin, Cesar and Huo, Huan and Xu, Guandong},
+  journal={Tech Science Press},
+  year={2026}
+}
+
+### Additional Suggestions for Your Repository:
+
+1. **Create a `requirements.txt` file:** Include libraries like `tensorflow==2.10.0`, `librosa`, `vmdpy`, `scikit-learn`, `seaborn`, `matplotlib`, and `tqdm`. This ensures anyone trying to replicate your work uses the exact same versions.
+2. **Add a `LICENSE` file:** Since this is an academic project, adding an MIT or Apache 2.0 license file to your GitHub repository is highly recommended so other researchers know they can legally build upon your code.
+3. **Zenodo Integration:** While a Google Drive link is great for immediate sharing,
