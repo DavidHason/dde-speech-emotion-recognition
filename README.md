@@ -29,7 +29,7 @@ The framework was rigorously evaluated using a strict **Leave-One-Speaker-Out (L
 
 | Dataset | Classes | Overall Accuracy (LOSO) | Macro F1-Score |
 | :--- | :---: | :---: | :---: |
-| **EMO-DB** (German) | 7 | **80.00%** | 0.73 |
+| **EMO-DB** (German) | 7 | **82.55%** | 0.73 |
 | **RAVDESS** (English) | 8 | **61.00%** | 0.43 |
 
 *Note: In our comprehensive comparative architectural benchmarking, the shallow, sequential convolutional structure of **VGG16** consistently outperformed deeper networks (ResNet50, EfficientNetB0) by avoiding severe overfitting on these relatively small acoustic datasets.*
