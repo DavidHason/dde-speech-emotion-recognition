@@ -57,3 +57,47 @@ dde-speech-emotion-recognition/
 ├── requirements.txt
 └── README.md
 
+
+⚙️ Installation and Requirements
+The framework is built entirely in Python. It isolates heavy digital signal processing from the neural optimization loop to ensure computational efficiency and prevent GPU memory fragmentation.
+
+1- Clone the repository:
+git clone [https://github.com/DavidHason/dde-speech-emotion-recognition.git](https://github.com/DavidHason/dde-speech-emotion-recognition.git)
+cd dde-speech-emotion-recognition
+
+2- Install dependencies:
+pip install -r requirements.txt
+
+
+🚀 Usage
+1. Dataset Access & Precomputed Features
+Due to GitHub file size limits, the raw datasets and precomputed .npy arrays are hosted externally.
+
+Download the Data: Access the EMO-DB and RAVDESS features here: Google Drive Dataset Link
+
+Place the extracted contents directly into the data/precomputed_features/ directory.
+
+2. Feature Extraction (Optional)
+If you wish to extract features from scratch using your own .wav files, place them into the appropriate directories under data/raw_audio/ and run the extraction scripts in modules/feature_extraction.py.
+
+Note: The VMD extraction performs Alternate Direction Method of Multipliers (ADMM) optimization and may take considerable time depending on dataset size.
+
+
+3. Training and Evaluation (LOSO)
+The training pipelines are located in the notebooks/ directory. The scripts handle:
+
+Loading the precomputed .npy arrays.
+
+Micro-batching (batch size 4) and dynamic VRAM allocation to manage the dense 3D inputs.
+
+Executing the rigorous Leave-One-Speaker-Out cross-validation loop.
+
+Automatically generating comprehensive classification reports, Area Under the Curve (AUC) metrics, and normalized Confusion Matrices (.tif format).
+
+@article{HasonRudd2026DDESER,
+  title={DDE-SER: A Dual-Decomposition Ensemble Framework Fusing Adaptive Variational Modes and Harmonic-Percussive Spectrograms for Speech Emotion Recognition},
+  author={Hason Rudd, David and Wang, Xiangmeng and Islam, Md Rafiqul and Wang, Xianzhi and Sanin, Cesar and Huo, Huan and Xu, Guandong},
+  journal={Human-centric Computing and Information Sciences},
+  year={2026},
+  note={Under Review}
+}
