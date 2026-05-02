@@ -23,6 +23,14 @@ Speech Emotion Recognition (SER) is persistently challenged by the non-stationar
 
 ---
 
+```mermaid
+graph TD
+    subgraph Data Processing & Feature Engineering
+    A[Raw Audio .wav] --> B{Extraction Engine}
+    ... (rest of your diagram code)
+    end
+
+
 ## 📊 Datasets and Performance
 
 The framework was rigorously evaluated using a strict **Leave-One-Speaker-Out (LOSO)** cross-validation protocol to ensure true speaker-independence and zero data leakage.
@@ -99,5 +107,7 @@ Automatically generating comprehensive classification reports, Area Under the Cu
   author={Hason Rudd, David and Wang, Xiangmeng and Islam, Md Rafiqul and Wang, Xianzhi and Sanin, Cesar and Huo, Huan and Xu, Guandong},
   journal={Human-centric Computing and Information Sciences},
   year={2026},
+
+
   note={Under Review}
 }
