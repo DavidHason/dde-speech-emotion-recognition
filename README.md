@@ -58,6 +58,29 @@ dde-speech-emotion-recognition/
 └── README.md
 
 
+graph TD
+    subgraph Data Processing & Feature Engineering
+    A[Raw Audio .wav] --> B{Extraction Engine}
+    B -->|Branch A| C[Variational Mode Decomposition]
+    C --> E[Top 3 IMFs -> Mel-Spectrograms <br> 128x128x3 Tensor]
+    B -->|Branch B| D[Harmonic & Percussive Separation]
+    D --> F[HP-Mel Spectrograms <br> 128x128x3 Tensor]
+    end
+
+    subgraph Deep Learning Dual-Branch Backbone
+    E --> G[Backbone A <br> VGG16 / ResNet50 / EfficientNetB0]
+    F --> H[Backbone B <br> VGG16 / ResNet50 / EfficientNetB0]
+    G --> I[Global Average Pooling + Squeeze-and-Excitation]
+    H --> J[Global Average Pooling + Squeeze-and-Excitation]
+    end
+
+    subgraph Fusion & Classification
+    I --> K[Gated Attention Fusion]
+    J --> K
+    K --> L[MLP Classifier <br> Dense -> Dropout -> Dense]
+    L --> M[Softmax Output <br> Emotion Prediction]
+    end
+
 ⚙️ Installation and Requirements
 The framework is built entirely in Python. It isolates heavy digital signal processing from the neural optimization loop to ensure computational efficiency and prevent GPU memory fragmentation.
 
