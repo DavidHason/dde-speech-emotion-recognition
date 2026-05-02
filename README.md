@@ -1,4 +1,4 @@
-# DDE-SER: Dual-Decomposition Ensemble Framework for Speech Emotion Recognition
+# DDE-SER: A Dual-Decomposition Ensemble Framework with Dynamic Feature Fusion for Speech Emotion Recognition
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 [![TensorFlow 2.10](https://img.shields.io/badge/TensorFlow-2.10-orange.svg)](https://tensorflow.org/)
