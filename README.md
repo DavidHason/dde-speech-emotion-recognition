@@ -23,7 +23,28 @@ Speech Emotion Recognition (SER) is persistently challenged by the non-stationar
 * **Explainable AI (XAI):** Provides Grad-CAM interpretability visualizations, proving mathematically and visually that the dual branches focus on distinct, complementary acoustic formants rather than dataset artifacts.
 
 ---
+graph TD
+    subgraph Data Processing & Feature Engineering
+        A[Raw Audio .wav] --> B[s13]
+        B -->|Branch A| C[Variational Mode Decomposition]
+        C --> E[Top 3 IMFs -> Mel-Spectrograms <br> 128x128x3 Tensor]
+        B -->|Branch B| D[Harmonic & Percussive Separation]
+        D --> F[HP-Mel Spectrograms <br> 128x128x3 Tensor]
+    end
 
+    subgraph Deep Learning Dual-Branch Backbone
+        E --> G[Backbone A <br> VGG16 / ResNet50 / EfficientNetB0]
+        F --> H[Backbone B <br> VGG16 / ResNet50 / EfficientNetB0]
+        G --> I[Global Average Pooling + Squeeze-and-Excitation]
+        H --> J[Global Average Pooling + Squeeze-and-Excitation]
+    end
+
+    subgraph Fusion & Classification
+        I --> K[Gated Attention Fusion]
+        J --> K[Gated Attention Fusion]
+        K --> L[MLP Classifier <br> Dense -> Dropout -> Dense]
+        L --> M[Softmax Output <br> Emotion Prediction]
+    end
 
 ## 📊 Datasets and Performance
 
