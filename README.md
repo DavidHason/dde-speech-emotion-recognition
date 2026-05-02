@@ -7,7 +7,38 @@
 > **Official implementation** of the paper: *"DDE-SER: A Dual-Decomposition Ensemble Framework Fusing Adaptive Variational Modes and Harmonic-Percussive Spectrograms for Speech Emotion Recognition"* by David Hason Rudd et al. (Submitted to *Human-centric Computing and Information Sciences*).
 
 ---
+```markdown
+# Dual-Branch Deep Learning Engine for Speech Emotion Recognition (DDE-SER)
 
+## Overview
+DDE-SER is an advanced, dual-branch deep learning framework designed for high-accuracy Speech Emotion Recognition. The pipeline extracts distinct acoustic features using Variational Mode Decomposition (VMD) and Harmonic-Percussive Source Separation (HPSS), processing them through parallel convolutional backbones with Squeeze-and-Excitation attention mechanisms. 
+
+**Author:** David Hason Rudd
+
+## Architecture & Pipeline
+```mermaid
+graph TD
+    subgraph Data Processing & Feature Engineering
+    A[Raw Audio .wav] --> B{Extraction Engine}
+    B -->|Branch A| C[Variational Mode Decomposition]
+    C --> E[Top 3 IMFs -> Mel-Spectrograms <br> 128x128x3 Tensor]
+    B -->|Branch B| D[Harmonic & Percussive Separation]
+    D --> F[HP-Mel Spectrograms <br> 128x128x3 Tensor]
+    end
+
+    subgraph Deep Learning Dual-Branch Backbone
+    E --> G[Backbone A <br> VGG16 / ResNet50 / EfficientNetB0]
+    F --> H[Backbone B <br> VGG16 / ResNet50 / EfficientNetB0]
+    G --> I[Global Average Pooling + Squeeze-and-Excitation]
+    H --> J[Global Average Pooling + Squeeze-and-Excitation]
+    end
+
+    subgraph Fusion & Classification
+    I --> K[Gated Attention Fusion]
+    J --> K
+    K --> L[MLP Classifier <br> Dense -> Dropout -> Dense]
+    L --> M[Softmax Output <br> Emotion Prediction]
+    end
 ## 📖 Overview
 
 Speech Emotion Recognition (SER) is persistently challenged by the non-stationary nature of vocal affect and transient, broadband noise. Standard deep learning pipelines often process spectrograms as monolithic inputs, failing to isolate orthogonal acoustic cues (e.g., separating tonal pitch from explosive consonants). 
