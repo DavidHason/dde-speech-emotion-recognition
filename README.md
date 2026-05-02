@@ -4,7 +4,7 @@
 [![TensorFlow 2.10](https://img.shields.io/badge/TensorFlow-2.10-orange.svg)](https://tensorflow.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Official implementation** of the paper: *"DDE-SER: A Dual-Decomposition Ensemble Framework Fusing Adaptive Variational Modes and Harmonic-Percussive Spectrograms for Speech Emotion Recognition"* by David Hason Rudd et al. (Submitted to *Human-centric Computing and Information Sciences*).
+> **Official implementation** of the paper: *"DDE-SER: A Dual-Decomposition Ensemble Framework with Dynamic Feature Fusion for Speech Emotion Recognition"* by David Hason Rudd et al. (Submitted to *Human-centric Inteligent Systems (HCIS)*).
 
 ---
 
