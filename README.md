@@ -22,7 +22,7 @@ Speech Emotion Recognition (SER) is persistently challenged by the non-stationar
 * **Robust Acoustic Perturbation:** Implements targeted in-place data augmentation (pitch shifting and dynamic white Gaussian noise injection) to prevent overfitting on pristine studio corpora.
 * **Explainable AI (XAI):** Provides Grad-CAM interpretability visualizations, proving mathematically and visually that the dual branches focus on distinct, complementary acoustic formants rather than dataset artifacts.
 
-<img width="1062" height="1657" alt="DDE-SER" src="https://github.com/user-attachments/assets/5af59eb2-6ef7-46d0-98df-2425f8415472" />
+<img width="500" alt="DDE-SER" src="https://github.com/user-attachments/assets/5af59eb2-6ef7-46d0-98df-2425f8415472" />
 
 
 
